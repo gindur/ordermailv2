@@ -1,13 +1,10 @@
 import { fail } from '@sveltejs/kit';
 import { Game } from './game';
-import { db } from '$lib/database/db.server';
-import { sources } from '$lib/database/schema';
 import type { PageServerLoad, Actions } from './$types';
 
 export const load = (async ({ cookies }) => {
-	const items = await db.select().from(sources);
 	const game = new Game(cookies.get('sverdle'));
-	console.log(items);
+
 	return {
 		/**
 		 * The player's guessed words so far
