@@ -21,7 +21,6 @@ export const load = (async ({ cookies }) => {
 		 * The correct answer, revealed if the game is over
 		 */
 		answer: game.answers.length >= 6 ? game.answer : null,
-		items: items
 	};
 }) satisfies PageServerLoad;
 
