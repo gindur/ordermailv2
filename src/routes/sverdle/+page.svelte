@@ -198,6 +198,8 @@
 	/>
 {/if}
 
+<p>{data.items}</p>
+
 <style>
 	form {
 		width: 100%;

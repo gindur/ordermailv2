@@ -8,7 +8,7 @@ import type { PageServerLoad, Actions } from './$types';
 export const load = (async ({ cookies }) => {
 	const game = new Game(cookies.get('sverdle'));
 	const items = await db.select().from(sources)
-	
+
 	return {
 		/**
 		 * The player's guessed words so far
@@ -25,6 +25,7 @@ export const load = (async ({ cookies }) => {
 		 * The correct answer, revealed if the game is over
 		 */
 		answer: game.answers.length >= 6 ? game.answer : null,
+		items: items
 	};
 }) satisfies PageServerLoad;
 
