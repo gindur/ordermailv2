@@ -1,9 +1,8 @@
 // db/db.server.ts
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
-import { PRIVATE_DATABASE_URL } from '$env/static/private';
 import { dev } from '$app/environment';
 
-// const client = dev ? postgres(DATABASE_URL) : postgres(DATABASE_URL, { ssl: 'require' });
-const client =  postgres(PRIVATE_DATABASE_URL) 
+const database_url = process.env.PRIVATE_DATABASE_URL;
+const client =  postgres(database_url) 
 export const db = drizzle(client, {});
