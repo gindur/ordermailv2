@@ -1,0 +1,183 @@
+{
+  "id": "792485bf-37dd-46d8-a6c9-08986fee8646",
+  "prevId": "8080e18f-dc40-4618-a712-c819935705c5",
+  "version": "5",
+  "dialect": "pg",
+  "tables": {
+    "companies": {
+      "name": "companies",
+      "schema": "",
+      "columns": {
+        "company_id": {
+          "name": "company_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "company_name": {
+          "name": "company_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "nbr_of_orders": {
+          "name": "nbr_of_orders",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "order_total": {
+          "name": "order_total",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email_marketing": {
+          "name": "email_marketing",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "companies_company_name_unique": {
+          "name": "companies_company_name_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "company_name"
+          ]
+        }
+      }
+    },
+    "contact_phonenumbers": {
+      "name": "contact_phonenumbers",
+      "schema": "",
+      "columns": {
+        "email_address": {
+          "name": "email_address",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "phonenumber": {
+          "name": "phonenumber",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "contact_phonenumbers_email_address_contacts_email_address_fk": {
+          "name": "contact_phonenumbers_email_address_contacts_email_address_fk",
+          "tableFrom": "contact_phonenumbers",
+          "tableTo": "contacts",
+          "columnsFrom": [
+            "email_address"
+          ],
+          "columnsTo": [
+            "email_address"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "contact_phonenumbers_phonenumber_phonenumbers_phonenumber_fk": {
+          "name": "contact_phonenumbers_phonenumber_phonenumbers_phonenumber_fk",
+          "tableFrom": "contact_phonenumbers",
+          "tableTo": "phonenumbers",
+          "columnsFrom": [
+            "phonenumber"
+          ],
+          "columnsTo": [
+            "phonenumber"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "contacts": {
+      "name": "contacts",
+      "schema": "",
+      "columns": {
+        "email_address": {
+          "name": "email_address",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "first_name": {
+          "name": "first_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_name": {
+          "name": "last_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email_marketing": {
+          "name": "email_marketing",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "company_id": {
+          "name": "company_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "contacts_company_id_companies_company_id_fk": {
+          "name": "contacts_company_id_companies_company_id_fk",
+          "tableFrom": "contacts",
+          "tableTo": "companies",
+          "columnsFrom": [
+            "company_id"
+          ],
+          "columnsTo": [
+            "company_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "phonenumbers": {
+      "name": "phonenumbers",
+      "schema": "",
+      "columns": {
+        "phonenumber": {
+          "name": "phonenumber",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
