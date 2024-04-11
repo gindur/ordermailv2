@@ -27,6 +27,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@sveltejs/adapter-node": "^5.0.1",
 		"drizzle-orm": "^0.30.8",
 		"pg": "^8.11.5",
 		"postgres": "^3.4.4"
